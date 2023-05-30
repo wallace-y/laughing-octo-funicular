@@ -33,6 +33,31 @@ function CommentList() {
     );
   }
 
+  if (comments.length === 0) {
+    return (
+      <main className="container bg-light">
+        <h3 className="text-center">
+          Look like there is nothing here. Why not start the conversation!
+        </h3>
+        <h4 className="text-center">Top tips for commenting</h4>
+        <ul>
+          <li>
+            Comments are a great way to give feedback, ask questions, and
+            interact with other users
+          </li>
+          <li>
+            Comments should be specific and relevant to the review you're
+            interacting with
+          </li>
+          <li>
+            Be kind. We all love games that's why we're here. If you don't agree
+            with someone's opinion, consider writing your own review!
+          </li>
+        </ul>
+      </main>
+    );
+  }
+
   return (
     <main className="container">
       <p className="text-center">Join the conversation...</p>
