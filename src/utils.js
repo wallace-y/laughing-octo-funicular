@@ -21,3 +21,11 @@ export const getCommentByReviewId = (review_id) => {
     return res.data;
   });
 };
+
+export const upvoteReview = (review_id, update) => {
+  return baseApi
+    .patch(`/reviews/${review_id}`, { inc_votes: update })
+    .then((res) => {
+      return res.data;
+    });
+};

@@ -60,7 +60,7 @@ function CommentList() {
 
   return (
     <main className="container">
-      <p className="text-center">Join the conversation...</p>
+      <h2 className="text-center">Join the conversation...</h2>
 
       <ul className="list-group ">
         {comments.map((comment) => {
@@ -68,7 +68,7 @@ function CommentList() {
           const formattedDate = moment(comment.created_at).format("D MMM YYYY");
 
           return (
-            <li className="list-group-item d-flex justify-content-between align-items-start">
+            <li key={comment.comment_id} className="list-group-item d-flex justify-content-between align-items-start">
               <div className="ms-2 me-auto">
                 <div className="fw-bold">
                   {comment.author}, {formattedDate}
