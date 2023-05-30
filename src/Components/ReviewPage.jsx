@@ -1,3 +1,5 @@
+import loadingImage from "../assets/tic-tac-toe.gif";
+
 import { useParams, Navigate } from "react-router-dom";
 import CommentList from "./CommentList";
 import Error from "./Error";
@@ -48,7 +50,7 @@ function ReviewPage() {
       <main>
         <img
           style={{ width: "100px" }}
-          src="src/assets/tic-tac-toe.gif"
+          src={loadingImage}
           alt="tic-tac-toe loading image"
         ></img>
       </main>
