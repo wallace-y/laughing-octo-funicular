@@ -13,6 +13,7 @@ function ReviewPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [voteCount, setVoteCount] = useState(0);
+  const [liked, setLiked] = useState(false);
 
   //destructure the review
   const {
@@ -35,12 +36,26 @@ function ReviewPage() {
   function upvote() {
     setVoteCount((currentCount) => currentCount + 1);
     setError(null);
+    setLiked(true);
     upvoteReview(review_id, 1).catch((err) => {
       if (err) {
         setVoteCount((currentCount) => currentCount - 1);
         setError("Something went wrong, please try again.");
+        setLiked(false);
       }
-      true;
+    });
+  }
+
+  function downVote() {
+    setVoteCount((currentCount) => currentCount - 1);
+    setError(null);
+    setLiked(false);
+    upvoteReview(review_id, -1).catch((err) => {
+      if (err) {
+        setVoteCount((currentCount) => currentCount + 1);
+        setError("Something went wrong, please try again.");
+        setLiked(true);
+      }
     });
   }
 
@@ -92,12 +107,15 @@ function ReviewPage() {
           <div className="row">
             <p className="col">Category: {category}</p>
             <div className="col">
-              <button onClick={upvote} className="btn btn-success">
-                <i className="fa-solid fa-thumbs-up fa-xl btn"></i>
-              </button>
-              <button className="btn btn-success mx-1">
-                <i className="fa-solid fa-comment fa-xl btn"></i>
-              </button>
+              {liked ? (
+                <button onClick={downVote} className="btn btn-success">
+                  <i className="fa-solid fa-thumbs-up fa-xl btn"></i>
+                </button>
+              ) : (
+                <button onClick={upvote} className="btn btn-light">
+                  <i className="fa-solid fa-thumbs-up fa-xl btn"></i>
+                </button>
+              )}
             </div>
           </div>
         </div>

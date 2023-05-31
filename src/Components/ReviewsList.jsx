@@ -64,7 +64,6 @@ function ReviewsList() {
             <th scope="col">Designer</th>
             <th scope="col">Category</th>
             <th scope="col">Votes</th>
-            <th scope="col">More Info</th>
           </tr>
         </thead>
         <tbody>
@@ -73,24 +72,22 @@ function ReviewsList() {
               <tr key={review.review_id}>
                 <th scope="row">{index + 1}</th>
                 <td>
-                  <img
-                    style={{ width: "75px" }}
-                    src={review.review_img_url}
-                    alt={`Cover art for board game review for ${review.title}`}
-                  ></img>
+                  <Link
+                    to={`/reviews/${review.review_id}`}
+                    className="link-dark"
+                  >
+                    {" "}
+                    <img
+                      style={{ width: "75px" }}
+                      src={review.review_img_url}
+                      alt={`Cover art for board game review for ${review.title}`}
+                    ></img>
+                  </Link>
                 </td>
                 <td>{review.title}</td>
                 <td>{review.designer}</td>
                 <td>{review.category}</td>
                 <td>{review.votes}</td>
-                <td>
-                  <Link
-                    to={`/reviews/${review.review_id}`}
-                    className="link-dark"
-                  >
-                    More Info
-                  </Link>
-                </td>
               </tr>
             );
           })}

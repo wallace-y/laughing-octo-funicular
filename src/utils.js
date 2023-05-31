@@ -42,11 +42,16 @@ export const getCategories = () => {
   });
 };
 
-    
-    
-    
-    export const addComment = (review_id, review) => {
+export const addComment = (review_id, review) => {
   return baseApi.post(`/reviews/${review_id}/comments`, review).then((res) => {
     return res.data;
   });
+};
+
+export const upvoteComment = (comment_id, update) => {
+  return baseApi
+    .patch(`/comments/${comment_id}`, { inc_votes: update })
+    .then((res) => {
+      return res.data;
+    });
 };
