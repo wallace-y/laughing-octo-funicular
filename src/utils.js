@@ -41,3 +41,12 @@ export const getCategories = () => {
     return res.data;
   });
 };
+
+    
+    
+    
+    export const addComment = (review_id, review) => {
+  return baseApi.post(`/reviews/${review_id}/comments`, review).then((res) => {
+    return res.data;
+  });
+};
