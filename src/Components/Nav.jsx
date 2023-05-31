@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
-        <h1 className="navbar-brand my-0 fs-4">Board Game Reviews</h1>
+        <Link to="/" className="navbar-brand my-0 fs-4">Board Game Reviews</Link>
         <button
           className="navbar-toggler"
           type="button"
