@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
-        <h1 className="navbar-brand">Board Game Reviews</h1>
+        <h1 className="navbar-brand my-0 fs-4">Board Game Reviews</h1>
         <button
           className="navbar-toggler"
           type="button"
@@ -19,7 +19,7 @@ function Nav() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav me-auto mb-2 mb-md-0">
+          <ul className="navbar-nav me-3 mb-2 mb-md-0">
             <li className="nav-item">
               <Link
                 to="/reviews"
