@@ -42,6 +42,9 @@ function SortDropdown({ searchParams, setSearchParams }) {
         <option value="designer" defaultValue className="text-capitalize">
           Designer
         </option>
+        <option value="category" defaultValue className="text-capitalize">
+          Category
+        </option>
         <option value="comment_count" defaultValue className="text-capitalize">
           Comments
         </option>

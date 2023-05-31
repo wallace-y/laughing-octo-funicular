@@ -77,6 +77,7 @@ function ReviewsList() {
             <th scope="col">Image</th>
             <th scope="col">Date</th>
             <th scope="col">Title</th>
+            <th scope="col">Owner</th>
             <th scope="col">Designer</th>
             <th scope="col">Category</th>
             <th scope="col">Votes</th>
@@ -107,6 +108,7 @@ function ReviewsList() {
                 </td>
                 <td>{formattedDate}</td>
                 <td>{review.title}</td>
+                <td>{review.owner}</td>
                 <td>{review.designer}</td>
                 <td className="text-capitalize">{review.category}</td>
                 <td>{review.votes}</td>
