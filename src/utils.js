@@ -29,3 +29,9 @@ export const upvoteReview = (review_id, update) => {
       return res.data;
     });
 };
+
+export const addComment = (review_id, review) => {
+  return baseApi.post(`/reviews/${review_id}/comments`, review).then((res) => {
+    return res.data;
+  });
+};
