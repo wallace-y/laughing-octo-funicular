@@ -89,11 +89,12 @@ function CommentList() {
     <main className="container">
       <p className="text-center">Join the conversation...</p>
       <form onSubmit={handleSubmit} className="form-group input-group mb-3">
-        <input
+        <textarea
+          required
           name="review_body"
           className="form-control"
           placeholder="What do you think?"
-        ></input>
+        ></textarea>
         <button className="btn btn-outline-secondary">
           <i className="fa-solid fa-comment btn"></i>
         </button>
