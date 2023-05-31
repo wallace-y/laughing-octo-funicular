@@ -1,25 +1,46 @@
+import loadingImage from "../assets/tic-tac-toe.gif";
 import { useEffect, useState } from "react";
-import { getAllReviews } from "../utils";
-import { Link } from "react-router-dom";
+import { getAllReviews, getCategories } from "../utils";
+import { Link, useSearchParams } from "react-router-dom";
+import CategoryDropdown from "./CategoryDropdown";
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const categoryQuery = searchParams.get("category");
+
+  // get all reviews
   useEffect(() => {
-    getAllReviews().then((reviewData) => {
+    getAllReviews(categoryQuery).then((reviewData) => {
       setReviews(reviewData);
       setLoading(false);
       return reviewData;
     });
+  }, [categoryQuery]);
+
+  // get all categories
+  useEffect(() => {
+    getCategories()
+      .then((categoryData) => {
+        setCategories(categoryData);
+        return categoryData;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   if (loading) {
     return (
-      <main>
+      <main className="text-center mt-5">
         <img
-          style={{ width: "100px" }}
-          src="src/assets/tic-tac-toe.gif"
+          style={{ width: "200px" }}
+          src={loadingImage}
           alt="tic-tac-toe loading image"
         ></img>
       </main>
@@ -28,7 +49,12 @@ function ReviewsList() {
 
   return (
     <main>
-      <h1>All Board Game Reviews</h1>
+      <h1 className="text-center mt-5">All Board Game Reviews</h1>
+      <CategoryDropdown
+        categories={categories}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
       <table className="table table-light table-striped">
         <thead>
           <tr>
@@ -70,12 +96,15 @@ function ReviewsList() {
           })}
         </tbody>
       </table>
-      <a
-        href="https://www.flaticon.com/free-animated-icons/table-game"
-        title="table game animated icons"
-      >
-        Table game animated icons created by Freepik - Flaticon
-      </a>
+      <div className="text-center">
+        <a
+          className="link-dark"
+          href="https://www.flaticon.com/free-animated-icons/table-game"
+          title="table game animated icons"
+        >
+          Table game animated icons created by Freepik - Flaticon
+        </a>
+      </div>
     </main>
   );
 }

@@ -4,10 +4,16 @@ const baseApi = axios.create({
   baseURL: "https://game-reviews-8ld1.onrender.com/api",
 });
 
-export const getAllReviews = () => {
-  return baseApi.get("/reviews").then((res) => {
-    return res.data;
-  });
+export const getAllReviews = (category) => {
+  return baseApi
+    .get("/reviews", {
+      params: {
+        category: category,
+      },
+    })
+    .then((res) => {
+      return res.data;
+    });
 };
 
 export const getReviewById = (review_id) => {
@@ -30,7 +36,16 @@ export const upvoteReview = (review_id, update) => {
     });
 };
 
-export const addComment = (review_id, review) => {
+export const getCategories = () => {
+  return baseApi.get("/categories").then((res) => {
+    return res.data;
+  });
+};
+
+    
+    
+    
+    export const addComment = (review_id, review) => {
   return baseApi.post(`/reviews/${review_id}/comments`, review).then((res) => {
     return res.data;
   });
