@@ -32,7 +32,11 @@ function CommentList() {
     setComments((currentList) => {
       let oldList = [...currentList];
       review.author = review.username;
-      review.comment_id = oldList[oldList.length - 1].comment_id + 1;
+      if (currentList.length > 0) {
+        review.comment_id = oldList[oldList.length - 1].comment_id + 1;
+      } else {
+        review.comment_id = 1;
+      }
       return [review, ...oldList];
     });
     setError(null);
@@ -77,6 +81,17 @@ function CommentList() {
             with someone's opinion, consider writing your own review!
           </li>
         </ul>
+        <form onSubmit={handleSubmit} className="form-group input-group mb-3">
+          <textarea
+            required
+            name="review_body"
+            className="form-control"
+            placeholder="What do you think?"
+          ></textarea>
+          <button className="btn btn-outline-secondary">
+            <i className="fa-solid fa-comment btn"></i>
+          </button>
+        </form>
       </main>
     );
   }
