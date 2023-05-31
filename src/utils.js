@@ -4,11 +4,13 @@ const baseApi = axios.create({
   baseURL: "https://game-reviews-8ld1.onrender.com/api",
 });
 
-export const getAllReviews = (category) => {
+export const getAllReviews = (category, sort_by, order) => {
   return baseApi
     .get("/reviews", {
       params: {
         category: category,
+        sort_by: sort_by,
+        order: order,
       },
     })
     .then((res) => {

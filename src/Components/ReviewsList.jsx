@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { getAllReviews, getCategories } from "../utils";
 import { Link, useSearchParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
+import SortDropdown from "./SortDropdown";
+import OrderDropdown from "./OrderDropdown";
+import moment from "moment";
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
@@ -13,15 +16,17 @@ function ReviewsList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categoryQuery = searchParams.get("category");
+  const sortQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   // get all reviews
   useEffect(() => {
-    getAllReviews(categoryQuery).then((reviewData) => {
+    getAllReviews(categoryQuery, sortQuery, orderQuery).then((reviewData) => {
       setReviews(reviewData);
       setLoading(false);
       return reviewData;
     });
-  }, [categoryQuery]);
+  }, [categoryQuery, sortQuery, orderQuery]);
 
   // get all categories
   useEffect(() => {
@@ -51,23 +56,39 @@ function ReviewsList() {
     <main>
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
       <CategoryDropdown
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
         categories={categories}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+      />
+      <SortDropdown
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
+      <OrderDropdown
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
       <table className="table table-light table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Image</th>
+            <th scope="col">Date</th>
             <th scope="col">Title</th>
             <th scope="col">Designer</th>
             <th scope="col">Category</th>
             <th scope="col">Votes</th>
+            <th scope="col">Comments</th>
           </tr>
         </thead>
         <tbody>
           {reviews.map((review, index) => {
+            const formattedDate = moment(review.created_at).format(
+              "D MMM YYYY"
+            );
+
             return (
               <tr key={review.review_id}>
                 <th scope="row">{index + 1}</th>
@@ -84,10 +105,12 @@ function ReviewsList() {
                     ></img>
                   </Link>
                 </td>
+                <td>{formattedDate}</td>
                 <td>{review.title}</td>
                 <td>{review.designer}</td>
-                <td>{review.category}</td>
+                <td className="text-capitalize">{review.category}</td>
                 <td>{review.votes}</td>
+                <td>{review.comment_count}</td>
               </tr>
             );
           })}

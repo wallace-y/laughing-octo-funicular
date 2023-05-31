@@ -1,8 +1,4 @@
-import { useSearchParams } from "react-router-dom";
-
-function Dropdown({ categories, selectedCategory, setSelectedCategory }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
+function Dropdown({ categories, searchParams, setSearchParams }) {
   const setFilterCategory = (selectedCategory) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("category", selectedCategory);
