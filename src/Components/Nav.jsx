@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ReviewSearch from "./ReviewSearch";
+import CurrentUser from "./CurrentUser";
 
 function Nav() {
   return (
@@ -35,6 +36,7 @@ function Nav() {
             </li>
           </ul>
           <ReviewSearch />
+          <CurrentUser />
         </div>
       </div>
     </nav>
