@@ -1,8 +1,4 @@
-import { useSearchParams } from "react-router-dom";
-
-function Dropdown({ categories, selectedCategory, setSelectedCategory }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
+function Dropdown({ categories, searchParams, setSearchParams }) {
   const setFilterCategory = (selectedCategory) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("category", selectedCategory);
@@ -11,16 +7,15 @@ function Dropdown({ categories, selectedCategory, setSelectedCategory }) {
 
   return (
     <section>
-      <label htmlFor="category-choice">Filter by:</label>
-
       <select
-        id="all-categories"
+        className="form-select"
+        id="category-selection"
         onChange={(event) => {
           setFilterCategory(event.target.value);
         }}
       >
         <option value="" defaultValue className="text-capitalize">
-          Show All
+          Show All Categories
         </option>
         {categories.map((category) => {
           return (

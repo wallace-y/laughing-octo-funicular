@@ -4,11 +4,13 @@ const baseApi = axios.create({
   baseURL: "https://game-reviews-8ld1.onrender.com/api",
 });
 
-export const getAllReviews = (category) => {
+export const getAllReviews = (category, sort_by, order) => {
   return baseApi
     .get("/reviews", {
       params: {
         category: category,
+        sort_by: sort_by,
+        order: order,
       },
     })
     .then((res) => {
@@ -58,6 +60,14 @@ export const upvoteComment = (comment_id, update) => {
 
 export const deleteComment = (comment_id) => {
   return baseApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
+  });
+};
+
+
+
+export const getUser = (username) => {
+  return baseApi.get(`/users/${username}`).then((res) => {
     return res.data;
   });
 };

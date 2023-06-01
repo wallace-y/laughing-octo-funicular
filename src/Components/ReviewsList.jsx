@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { getAllReviews, getCategories } from "../utils";
 import { Link, useSearchParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
+import SortDropdown from "./SortDropdown";
+import OrderDropdown from "./OrderDropdown";
+import moment from "moment";
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
@@ -13,15 +16,17 @@ function ReviewsList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categoryQuery = searchParams.get("category");
+  const sortQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   // get all reviews
   useEffect(() => {
-    getAllReviews(categoryQuery).then((reviewData) => {
+    getAllReviews(categoryQuery, sortQuery, orderQuery).then((reviewData) => {
       setReviews(reviewData);
       setLoading(false);
       return reviewData;
     });
-  }, [categoryQuery]);
+  }, [categoryQuery, sortQuery, orderQuery]);
 
   // get all categories
   useEffect(() => {
@@ -48,51 +53,76 @@ function ReviewsList() {
   }
 
   return (
-    <main>
+    <main className="m-5">
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
-      <CategoryDropdown
-        categories={categories}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <table className="table table-light table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">Title</th>
-            <th scope="col">Designer</th>
-            <th scope="col">Category</th>
-            <th scope="col">Votes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviews.map((review, index) => {
-            return (
-              <tr key={review.review_id}>
-                <th scope="row">{index + 1}</th>
-                <td>
-                  <Link
-                    to={`/reviews/${review.review_id}`}
-                    className="link-dark"
-                  >
-                    {" "}
-                    <img
-                      style={{ width: "75px" }}
-                      src={review.review_img_url}
-                      alt={`Cover art for board game review for ${review.title}`}
-                    ></img>
-                  </Link>
-                </td>
-                <td>{review.title}</td>
-                <td>{review.designer}</td>
-                <td>{review.category}</td>
-                <td>{review.votes}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="container d-flex justify-content-center mb-2">
+        <CategoryDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <SortDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <OrderDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+      </div>
+
+      <div className="table-responsive">
+        <table className="text-center table table-light table-striped table-bordered border-dark table-hover">
+          <thead className="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Image</th>
+              <th scope="col">Date</th>
+              <th scope="col">Title</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Designer</th>
+              <th scope="col">Category</th>
+              <th scope="col">Votes</th>
+              <th scope="col">Comments</th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {reviews.map((review, index) => {
+              const formattedDate = moment(review.created_at).format(
+                "D MMM YYYY"
+              );
+
+              return (
+                <tr key={review.review_id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>
+                    <Link
+                      to={`/reviews/${review.review_id}`}
+                      className="link-dark"
+                    >
+                      {" "}
+                      <img
+                        style={{ width: "75px" }}
+                        src={review.review_img_url}
+                        alt={`Cover art for board game review for ${review.title}`}
+                      ></img>
+                    </Link>
+                  </td>
+                  <td>{formattedDate}</td>
+                  <td>{review.title}</td>
+                  <td>{review.owner}</td>
+                  <td>{review.designer}</td>
+                  <td className="text-capitalize">{review.category}</td>
+                  <td>{review.votes}</td>
+                  <td>{review.comment_count}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <div className="text-center">
         <a
           className="link-dark"
