@@ -1,7 +1,5 @@
 # To Do Later
 
-- [] Add a logo to the index.html file
-- [] Chose a more engaging title in the index.html file
 - [] ReviewList - add hover state to table when styling
 - [] Add an error path route for if a route does not exist
 - [] Improve styling on the dropdown boxes and filters
@@ -19,3 +17,6 @@
 # Done
 
 - [x] Users page: users can view their profilepic/avatar in the NavBar
+- [x] Add a logo to the index.html file
+- [x] Chose a more engaging title in the index.html file
+
