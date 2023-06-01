@@ -13,7 +13,6 @@ function CommentList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     getCommentByReviewId(review_id)
       .then((commentData) => {
@@ -121,6 +120,15 @@ function CommentList() {
           return <CommentCard key={comment.comment_id} comment={comment} />;
         })}
       </ul>
+      <div className="text-center mt-5">
+        <a
+          className="link-dark"
+          href="https://www.flaticon.com/free-animated-icons/loading"
+          title="loading animated icons"
+        >
+          Loading animated icons created by Freepik - Flaticon
+        </a>
+      </div>
     </main>
   );
 }
