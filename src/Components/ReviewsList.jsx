@@ -53,7 +53,7 @@ function ReviewsList() {
   }
 
   return (
-    <main>
+    <main className="m-5">
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
       <div className="container d-flex justify-content-center mb-2">
         <CategoryDropdown
@@ -73,54 +73,56 @@ function ReviewsList() {
         />
       </div>
 
-      <table className="table table-light table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">Date</th>
-            <th scope="col">Title</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Designer</th>
-            <th scope="col">Category</th>
-            <th scope="col">Votes</th>
-            <th scope="col">Comments</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviews.map((review, index) => {
-            const formattedDate = moment(review.created_at).format(
-              "D MMM YYYY"
-            );
+      <div className="table-responsive">
+        <table className="text-center table table-light table-striped table-bordered border-dark table-hover">
+          <thead className="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Image</th>
+              <th scope="col">Date</th>
+              <th scope="col">Title</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Designer</th>
+              <th scope="col">Category</th>
+              <th scope="col">Votes</th>
+              <th scope="col">Comments</th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {reviews.map((review, index) => {
+              const formattedDate = moment(review.created_at).format(
+                "D MMM YYYY"
+              );
 
-            return (
-              <tr key={review.review_id}>
-                <th scope="row">{index + 1}</th>
-                <td>
-                  <Link
-                    to={`/reviews/${review.review_id}`}
-                    className="link-dark"
-                  >
-                    {" "}
-                    <img
-                      style={{ width: "75px" }}
-                      src={review.review_img_url}
-                      alt={`Cover art for board game review for ${review.title}`}
-                    ></img>
-                  </Link>
-                </td>
-                <td>{formattedDate}</td>
-                <td>{review.title}</td>
-                <td>{review.owner}</td>
-                <td>{review.designer}</td>
-                <td className="text-capitalize">{review.category}</td>
-                <td>{review.votes}</td>
-                <td>{review.comment_count}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+              return (
+                <tr key={review.review_id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>
+                    <Link
+                      to={`/reviews/${review.review_id}`}
+                      className="link-dark"
+                    >
+                      {" "}
+                      <img
+                        style={{ width: "75px" }}
+                        src={review.review_img_url}
+                        alt={`Cover art for board game review for ${review.title}`}
+                      ></img>
+                    </Link>
+                  </td>
+                  <td>{formattedDate}</td>
+                  <td>{review.title}</td>
+                  <td>{review.owner}</td>
+                  <td>{review.designer}</td>
+                  <td className="text-capitalize">{review.category}</td>
+                  <td>{review.votes}</td>
+                  <td>{review.comment_count}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <div className="text-center">
         <a
           className="link-dark"
