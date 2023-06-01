@@ -13,9 +13,8 @@ function SortDropdown({ searchParams, setSearchParams }) {
 
   return (
     <section>
-      <label htmlFor="sort-choice">Sort by:</label>
-
       <select
+        className="form-select"
         id="all-filters"
         onChange={(event) => {
           setSortQuery(event.target.value);
