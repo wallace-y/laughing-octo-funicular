@@ -7,9 +7,8 @@ function OrderDropdown({ searchParams, setSearchParams }) {
 
   return (
     <section>
-      <label htmlFor="sort-choice">Order:</label>
-
       <select
+        className="form-select"
         id="all-filters"
         onChange={(event) => {
           setOrderQuery(event.target.value);

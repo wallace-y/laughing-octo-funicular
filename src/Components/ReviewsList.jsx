@@ -55,21 +55,24 @@ function ReviewsList() {
   return (
     <main>
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
-      <CategoryDropdown
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-        categories={categories}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <SortDropdown
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
-      <OrderDropdown
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
+      <div className="container d-flex justify-content-center mb-2">
+        <CategoryDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <SortDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <OrderDropdown
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+      </div>
+
       <table className="table table-light table-striped">
         <thead>
           <tr>
