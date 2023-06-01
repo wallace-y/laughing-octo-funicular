@@ -15,7 +15,7 @@ const CurrentUser = () => {
   }, []);
 
   return (
-    <p className="text-light my-0">
+    <p className="text-light my-auto">
       You're logged in as: {user}{" "}
       <img
       className="img-thumbnail shadow"
