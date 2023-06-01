@@ -6,12 +6,14 @@ import CategoryDropdown from "./CategoryDropdown";
 import SortDropdown from "./SortDropdown";
 import OrderDropdown from "./OrderDropdown";
 import moment from "moment";
+import Error from "./Error";
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [error, setError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -21,11 +23,16 @@ function ReviewsList() {
 
   // get all reviews
   useEffect(() => {
-    getAllReviews(categoryQuery, sortQuery, orderQuery).then((reviewData) => {
-      setReviews(reviewData);
-      setLoading(false);
-      return reviewData;
-    });
+    getAllReviews(categoryQuery, sortQuery, orderQuery)
+      .then((reviewData) => {
+        setReviews(reviewData);
+        setLoading(false);
+        return reviewData;
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err.message);
+      });
   }, [categoryQuery, sortQuery, orderQuery]);
 
   // get all categories
@@ -36,7 +43,8 @@ function ReviewsList() {
         return categoryData;
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false);
+        setError(err.message);
       });
   }, []);
 
@@ -50,6 +58,10 @@ function ReviewsList() {
         ></img>
       </main>
     );
+  }
+
+  if (error) {
+    return <Error message={error} />;
   }
 
   return (

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import errorImage from "../assets/game-over.gif";
 
 function Error({ message }) {
-  console.log(message);
   return (
     <div className="text-center mt-5">
       <h1 className="">{message}</h1>
@@ -14,7 +13,7 @@ function Error({ message }) {
           alt="error-image-for-broken-routes"
         ></img>
       </div>
-      <div>
+      <div className="mt-2">
         <p>
           Look's like something didn't work there.{" "}
           <Link to="/" className="link-dark">
