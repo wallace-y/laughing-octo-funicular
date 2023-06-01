@@ -55,3 +55,25 @@ export const upvoteComment = (comment_id, update) => {
       return res.data;
     });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const getUser = (username) => {
+  return baseApi.get(`/users/${username}`).then((res) => {
+    return res.data;
+  });
+};
