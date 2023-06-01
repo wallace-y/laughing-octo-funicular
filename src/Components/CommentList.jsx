@@ -13,6 +13,7 @@ function CommentList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
     getCommentByReviewId(review_id)
       .then((commentData) => {
