@@ -34,6 +34,11 @@ function Nav() {
                 Browse All Categories
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/users" className="nav-link" aria-current="page">
+                Browse All Users
+              </Link>
+            </li>
           </ul>
           <ReviewSearch />
           <CurrentUser />
