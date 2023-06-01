@@ -59,7 +59,7 @@ function CommentList() {
 
   if (loading) {
     return (
-      <main>
+      <main className="text-center mt-5">
         <img
           style={{ width: "100px" }}
           src={loadingImage}
@@ -110,8 +110,8 @@ function CommentList() {
   }
 
   return (
-    <main className="container">
-      <p className="text-center">Join the conversation...</p>
+    <main className="container mt-5">
+      <h2 className="text-center">Join the conversation...</h2>
       <form onSubmit={handleSubmit} className="form-group input-group mb-3">
         <textarea
           required
@@ -124,8 +124,8 @@ function CommentList() {
           }}
           onKeyUp={handleKeyPress}
         ></textarea>
-        <button className="btn btn-outline-secondary">
-          <i className="fa-solid fa-comment btn"></i>
+        <button className="btn btn-light border">
+          <i className="fa-solid fa-comment fa-xl"></i>
         </button>
       </form>
       <ul className="list-group ">
