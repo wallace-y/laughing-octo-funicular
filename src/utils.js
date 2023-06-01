@@ -64,10 +64,14 @@ export const deleteComment = (comment_id) => {
   });
 };
 
-
-
 export const getUser = (username) => {
   return baseApi.get(`/users/${username}`).then((res) => {
+    return res.data;
+  });
+};
+
+export const getAllUsers = () => {
+  return baseApi.get(`/users`).then((res) => {
     return res.data;
   });
 };
