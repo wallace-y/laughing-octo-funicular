@@ -9,7 +9,6 @@
 - [] Users page: create a login/logout function - no passwords as authentication not yet built
 - [] Reviews List: users can create a new review for a game
 - [] Reviews List: users can delete a review (if they own it)
-- [] Review navbar styling on reduced size screens
 
 # Done
 
@@ -21,6 +20,6 @@
 - [x] Add an error path route for if a route does not exist
 - [x] Comments page loading bar should be centered
 - [x] Centre loading image in CommentList container
-
+- [x] Review navbar styling on reduced size screens
 
 
