@@ -95,7 +95,7 @@ function CommentCard({ comment }) {
                   </div>
                   <div className="mb-1">{body}</div>
                   <div className="input-group justify-content-end">
-                    <div className="input-group-text">{voteCount}</div>
+                    <div className="input-group-text"><strong>{voteCount}</strong></div>
                     {/* render like button depending on if liked or not */}
 
                     {liked ? (
@@ -125,9 +125,7 @@ function CommentCard({ comment }) {
                   </div>
                 </div>
 
-                <span className="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle">
-                  {voteCount}
-                </span>
+      
               </li>
             )}
           </>
