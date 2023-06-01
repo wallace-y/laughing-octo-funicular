@@ -1,7 +1,5 @@
 # To Do Later
 
-- [] ReviewList - add hover state to table when styling
-- [] Add an error path route for if a route does not exist
 - [] Centre loading image in CommentList container
 - [] Format spacing on the review page for the button and category to render at each end of the container. Ie category as left as possible, like button as right as possible
 - [] Change username and date order in the ReviewPage header. Ie <username>, <date>
@@ -19,3 +17,7 @@
 - [x] Add a logo to the index.html file
 - [x] Chose a more engaging title in the index.html file
 - [x] Improve styling on the dropdown boxes and filters
+- [x] ReviewList - add hover state to table when styling
+- [x] Add an error path route for if a route does not exist
+
+
