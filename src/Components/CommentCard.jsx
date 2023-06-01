@@ -1,7 +1,7 @@
 import moment from "moment";
 import inProgressImage from "../assets/loading.gif";
 import Error from "./Error";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { upvoteComment, deleteComment } from "../utils";
 import { UserContext } from "../contexts/User";
 
@@ -13,6 +13,11 @@ function CommentCard({ comment }) {
   const [inProgress, setInProgress] = useState(false);
   const [voteCount, setVoteCount] = useState(0);
   const [error, setError] = useState(null);
+
+  //set initial vote count
+  useEffect(() => {
+    setVoteCount(votes);
+  }, []);
 
   function upvote() {
     setVoteCount((currentCount) => currentCount + 1);
@@ -84,39 +89,41 @@ function CommentCard({ comment }) {
                 key={comment_id}
                 className="list-group-item d-flex justify-content-between align-items-start"
               >
-                <div className="ms-2 me-auto">
+                <div className="ms-2 flex-fill">
                   <div className="fw-bold mb-1">
                     {formattedDate}, {author}
                   </div>
                   <div className="mb-1">{body}</div>
-                                  {/* render like button depending on if liked or not */}
-                <div className="text-end">
-                  {liked ? (
-                    <button
-                      onClick={downVote}
-                      className="btn btn-success border"
-                    >
-                      <i className="fa-solid fa-thumbs-up fa-xl"></i>
-                    </button>
-                  ) : (
-                    <button onClick={upvote} className="btn btn-light border">
-                      <i className="fa-solid fa-thumbs-up fa-xl"></i>
-                    </button>
-                  )}
-                  {/* conditionally render delete button. If not current user, cannot delete comment */}
-                  {user === author ? (
-                    <button
-                      onClick={handleDelete}
-                      className="btn btn-light border m-auto"
-                    >
-                      <i className="text-danger fa-solid fa-square-minus fa-xl "></i>
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-                </div>
+                  <div className="input-group justify-content-end">
+                    <div className="input-group-text">{voteCount}</div>
+                    {/* render like button depending on if liked or not */}
 
+                    {liked ? (
+                      <button
+                        type="button"
+                        onClick={downVote}
+                        className="btn btn-success border"
+                      >
+                        <i className="fa-solid fa-thumbs-up fa-xl"></i>
+                      </button>
+                    ) : (
+                      <button onClick={upvote} className="btn btn-light border">
+                        <i className="fa-solid fa-thumbs-up fa-xl"></i>
+                      </button>
+                    )}
+                    {/* conditionally render delete button. If not current user, cannot delete comment */}
+                    {user === author ? (
+                      <button
+                        onClick={handleDelete}
+                        className="btn btn-light border"
+                      >
+                        <i className="text-danger fa-solid fa-square-minus fa-xl "></i>
+                      </button>
+                    ) : (
+                      false
+                    )}
+                  </div>
+                </div>
 
                 <span className="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle">
                   {voteCount}
