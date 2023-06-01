@@ -55,3 +55,9 @@ export const upvoteComment = (comment_id, update) => {
       return res.data;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return baseApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
+  });
+};
