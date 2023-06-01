@@ -1,5 +1,5 @@
 # To Do Later
-
+- [] Loading state for new comments could be improved. Currently if two comments are entered in quick succession they are briefly assigned the same value.
 - [] Centre loading image in CommentList container
 - [] Format spacing on the review page for the button and category to render at each end of the container. Ie category as left as possible, like button as right as possible
 - [] Change username and date order in the ReviewPage header. Ie <username>, <date>

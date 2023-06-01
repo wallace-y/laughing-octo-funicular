@@ -12,6 +12,7 @@ function CommentList() {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     getCommentByReviewId(review_id)
@@ -27,7 +28,8 @@ function CommentList() {
   function handleSubmit(event) {
     event.preventDefault();
     let review = {
-      body: event.target.review_body.value,
+      // body: event.target.review_body.value,
+      body: newComment,
       username: "cooljmessy",
     };
     setComments((currentList) => {
@@ -46,7 +48,13 @@ function CommentList() {
         setError("There was a problem adding your comment. Please try again.");
       }
     });
-    event.target.review_body.value = "";
+    setNewComment("");
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      handleSubmit(e);
+    }
   }
 
   if (loading) {
@@ -110,6 +118,11 @@ function CommentList() {
           name="review_body"
           className="form-control"
           placeholder="What do you think?"
+          value={newComment}
+          onChange={(e) => {
+            setNewComment(e.target.value);
+          }}
+          onKeyUp={handleKeyPress}
         ></textarea>
         <button className="btn btn-outline-secondary">
           <i className="fa-solid fa-comment btn"></i>
