@@ -65,7 +65,7 @@ function NewReview() {
 
   if (posted) {
     return (
-      <main className="text-center mt-5">
+      <main className="text-center mt-5 font-monospace">
         <h1>Post successfully submitted.</h1>
         <Link to="/reviews" className="link-dark">
           Browse reviews
@@ -75,9 +75,9 @@ function NewReview() {
   }
 
   return (
-    <main className="container mt-5">
+    <main className="container mt-5 font-monospace">
       <div className="col">
-        <h4 className="mb-3">Post a review</h4>
+        <h1 className="mb-3 text-center">Post a review</h1>
         <form
           className="needs-validation"
           noValidate=""
@@ -127,7 +127,7 @@ function NewReview() {
                 className="form-control"
                 id="body"
                 name="body"
-                placeholder="The body of your review"
+                placeholder="The body of your review..."
                 required
               ></textarea>
               <div className="invalid-feedback">Please enter your review.</div>

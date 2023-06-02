@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="px-4 py-5 my-5 text-center">
+    <div className="px-4 py-5 my-5 text-center font-monospace">
       <h1 className="display-5 fw-bold text-body-emphasis">
         Welcome to board game reviews
       </h1>

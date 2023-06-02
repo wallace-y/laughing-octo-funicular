@@ -65,7 +65,7 @@ function ReviewsList() {
   }
 
   return (
-    <main className="m-5">
+    <main className="m-5 bg-light font-monospace">
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
       <div className="container flex-column flex-sm-row d-flex justify-content-center mb-2">
         <CategoryDropdown
@@ -86,7 +86,7 @@ function ReviewsList() {
       </div>
 
       <div className="table-responsive">
-        <table className="text-center table table-light table-striped table-bordered border-dark table-hover">
+        <table className="text-center table table-dark table-striped table-bordered border-light table-hover">
           <thead className="table-dark">
             <tr>
               <th scope="col" className="d-none d-sm-table-cell">
@@ -118,7 +118,7 @@ function ReviewsList() {
               </th>
             </tr>
           </thead>
-          <tbody className="">
+          <tbody className="table-group-divider">
             {reviews.map((review, index) => {
               const formattedDate = moment(review.created_at).format(
                 "D MMM YYYY"
