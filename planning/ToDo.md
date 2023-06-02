@@ -4,7 +4,8 @@
 
 # To Do Later
 
-- [] Add a Post review buttong in the Reviews List page
+- [] Add a Post review button in the Reviews List page
+- [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
 - [] Review the "first comment" flow as it appears to not post the comment body
 - [] Categories page: users can add a new category if it doesn't exist
 - [] Reviews List: users can delete a review (if they own it)
