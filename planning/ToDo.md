@@ -4,15 +4,15 @@
 
 # To Do Later
 
-- [] When posting a new comment there is no vote count assigned. Default to 0
+- [] On EXTRA small mobile screens create a smaller table for better visibility
+- [] Reviews List: users can delete a review (if they own it)
 - [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
 - [] Categories page: users can add a new category if it doesn't exist
-- [] Reviews List: users can delete a review (if they own it)
-- [] On EXTRA small mobile screens create a smaller table for better visibility
 - [] Users page: create a login/logout function - no passwords as authentication not yet built
 
 # Done
 
+- [x] When posting a new comment there is no vote count assigned. Default to 0
 - [x] Add a Post review button in the Reviews List page
 - [x] Review the "first comment" flow as it appears to not post the comment body
 - [x] Reviews List: users can create a new review for a game

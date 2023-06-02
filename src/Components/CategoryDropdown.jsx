@@ -15,7 +15,7 @@ function Dropdown({ categories, searchParams, setSearchParams }) {
         }}
       >
         <option value="" defaultValue className="text-capitalize">
-          Show All Categories
+          All Categories
         </option>
         {categories.map((category) => {
           return (

@@ -67,7 +67,7 @@ function ReviewsList() {
   return (
     <main className="m-5">
       <h1 className="text-center mt-5">All Board Game Reviews</h1>
-      <div className="container d-flex justify-content-center mb-2">
+      <div className="container flex-column flex-sm-row d-flex justify-content-center mb-2">
         <CategoryDropdown
           searchParams={searchParams}
           setSearchParams={setSearchParams}
@@ -89,15 +89,33 @@ function ReviewsList() {
         <table className="text-center table table-light table-striped table-bordered border-dark table-hover">
           <thead className="table-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Image</th>
-              <th scope="col">Date</th>
-              <th scope="col">Title</th>
-              <th scope="col">Owner</th>
-              <th scope="col">Designer</th>
-              <th scope="col">Category</th>
-              <th scope="col">Votes</th>
-              <th scope="col">Comments</th>
+              <th scope="col" className="d-none d-sm-table-cell">
+                #
+              </th>
+              <th scope="col" className="d-block">
+                Image
+              </th>
+              <th scope="col" className="d-none d-sm-table-cell">
+                Date
+              </th>
+              <th scope="col" className="d-block">
+                Title
+              </th>
+              <th scope="col" className="d-none d-sm-table-cell">
+                Owner
+              </th>
+              <th scope="col" className="d-none d-sm-table-cell">
+                Designer
+              </th>
+              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+                Category
+              </th>
+              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+                Votes
+              </th>
+              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+                Comments
+              </th>
             </tr>
           </thead>
           <tbody className="">
@@ -108,7 +126,9 @@ function ReviewsList() {
 
               return (
                 <tr key={review.review_id}>
-                  <th scope="row">{index + 1}</th>
+                  <th scope="row" className="d-none d-sm-table-cell">
+                    {index + 1}
+                  </th>
                   <td>
                     <Link
                       to={`/reviews/${review.review_id}`}
@@ -122,13 +142,17 @@ function ReviewsList() {
                       ></img>
                     </Link>
                   </td>
-                  <td>{formattedDate}</td>
-                  <td>{review.title}</td>
-                  <td>{review.owner}</td>
-                  <td>{review.designer}</td>
-                  <td className="text-capitalize">{review.category}</td>
-                  <td>{review.votes}</td>
-                  <td>{review.comment_count}</td>
+                  <td className="d-none d-sm-table-cell">{formattedDate}</td>
+                  <td className="">{review.title}</td>
+                  <td className="d-none d-sm-table-cell">{review.owner}</td>
+                  <td className="d-none d-sm-table-cell">{review.designer}</td>
+                  <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell text-capitalize">
+                    {review.category}
+                  </td>
+                  <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell">{review.votes}</td>
+                  <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+                    {review.comment_count}
+                  </td>
                 </tr>
               );
             })}

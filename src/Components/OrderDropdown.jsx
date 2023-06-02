@@ -15,7 +15,7 @@ function OrderDropdown({ searchParams, setSearchParams }) {
         }}
       >
         <option value="" defaultValue className="text-capitalize">
-          Default order
+          Default Order
         </option>
         <option value="ASC" defaultValue className="text-capitalize">
           Ascending
