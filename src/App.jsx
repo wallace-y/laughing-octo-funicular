@@ -8,7 +8,7 @@ const ReviewPage = lazy(() => import("./Components/ReviewPage"));
 const UserList = lazy(() => import("./Components/UserList"));
 const UserPage = lazy(() => import("./Components/UserPage"));
 const Error = lazy(() => import("./Components/Error"));
-
+const NewReview = lazy(() => import("./Components/NewReview"));
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/reviews" element={<ReviewsList />} />
+          <Route path="/reviews/new" element={<NewReview />} />
           <Route path="/reviews/:review_id" element={<ReviewPage />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/users/:username" element={<UserPage />} />

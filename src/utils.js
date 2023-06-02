@@ -75,3 +75,9 @@ export const getAllUsers = () => {
     return res.data;
   });
 };
+
+export const postReview = (review) => {
+  return baseApi.post(`/reviews`, review).then((res) => {
+    return res.data;
+  });
+};
