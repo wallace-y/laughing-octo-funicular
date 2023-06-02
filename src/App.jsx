@@ -1,27 +1,30 @@
-import Home from "./Components/Home";
-import "./App.css";
-import Nav from "./Components/Nav";
-import { Navigate, Route, Routes } from "react-router-dom";
-import Categories from "./Components/Categories";
-import ReviewsList from "./Components/ReviewsList";
-import ReviewPage from "./Components/ReviewPage";
-import UserList from "./Components/UserList";
-import UserPage from "./Components/UserPage";
-import Error from "./Components/Error";
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+const Home = lazy(() => import("./Components/Home"));
+const Nav = lazy(() => import("./Components/Nav"));
+const Categories = lazy(() => import("./Components/Categories"));
+const ReviewsList = lazy(() => import("./Components/ReviewsList"));
+const ReviewPage = lazy(() => import("./Components/ReviewPage"));
+const UserList = lazy(() => import("./Components/UserList"));
+const UserPage = lazy(() => import("./Components/UserPage"));
+const Error = lazy(() => import("./Components/Error"));
+
 
 function App() {
   return (
     <div>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/reviews" element={<ReviewsList />} />
-        <Route path="/reviews/:review_id" element={<ReviewPage />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/users/:username" element={<UserPage />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/reviews" element={<ReviewsList />} />
+          <Route path="/reviews/:review_id" element={<ReviewPage />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/users/:username" element={<UserPage />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
