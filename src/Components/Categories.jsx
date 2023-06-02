@@ -1,20 +1,36 @@
+import loadingImage from "../assets/tic-tac-toe.gif";
 import { useState, useEffect } from "react";
 import { getCategories } from "../utils";
 import { Link } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getCategories()
       .then((categoryData) => {
         setCategories(categoryData);
+        setLoading(false);
         return categoryData;
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <main className="text-center mt-5">
+        <img
+          style={{ width: "200px" }}
+          src={loadingImage}
+          alt="tic-tac-toe loading image"
+        ></img>
+      </main>
+    );
+  }
 
   return (
     <div className="container mt-5 pb-3 font-monospace">
