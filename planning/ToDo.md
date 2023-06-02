@@ -4,13 +4,15 @@
 
 # To Do Later
 
-- [] Reviews List: users can create a new review for a game
+- [] Add a Post review buttong in the Reviews List page
+- [] Review the "first comment" flow as it appears to not post the comment body
 - [] Categories page: users can add a new category if it doesn't exist
 - [] Reviews List: users can delete a review (if they own it)
 - [] Users page: create a login/logout function - no passwords as authentication not yet built
 
 # Done
 
+- [x] Reviews List: users can create a new review for a game
 - [x] Users page: users can review a list of all other users
 - [x] Users: individual page for each user
 - [x] Format spacing on the review page for the button and category to render at each end of the container. Ie category as left as possible, like button as right as possible
