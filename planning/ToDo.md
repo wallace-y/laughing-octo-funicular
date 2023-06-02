@@ -1,8 +1,8 @@
 # To Do First
 
-- [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
 - [] Categories page: users can add a new category if it doesn't exist
 - [] Investigate 404 error in COmmentsList component when deleting review. Look to prevent rendering comment list when deleting?
+- [] Add custom colours
 
 # To Do Later
 
@@ -10,6 +10,7 @@
 
 # Done
 
+- [x] Improve lazy loading component in App.jsx from just Loading... to the loading image.
 - [x] Loading state for new comments could be improved. Currently if two comments are entered in quick succession they are briefly assigned the same value.
 - [x] Reviews List: users can delete a review (if they own it)
 - [x] On EXTRA small mobile screens create a smaller table for better visibility

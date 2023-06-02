@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import loadingImage from "../src/assets/tic-tac-toe.gif";
 const Home = lazy(() => import("./Components/Home"));
 const Nav = lazy(() => import("./Components/Nav"));
 const Categories = lazy(() => import("./Components/Categories"));
@@ -14,7 +15,17 @@ const Deleted = lazy(() => import("./Components/Deleted"));
 function App() {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <main className="text-center mt-5">
+            <img
+              style={{ width: "200px" }}
+              src={loadingImage}
+              alt="tic-tac-toe loading image"
+            ></img>
+          </main>
+        }
+      >
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
