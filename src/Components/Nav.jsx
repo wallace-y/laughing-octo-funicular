@@ -26,17 +26,22 @@ function Nav() {
                 className="nav-link active"
                 aria-current="page"
               >
-                Browse All Reviews
+                Reviews
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/reviews/new" className="nav-link" aria-current="page">
+                Post
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/categories" className="nav-link" aria-current="page">
-                Browse All Categories
+                Categories
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/users" className="nav-link" aria-current="page">
-                Browse All Users
+                Users
               </Link>
             </li>
           </ul>

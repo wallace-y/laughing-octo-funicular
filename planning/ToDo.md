@@ -4,15 +4,17 @@
 
 # To Do Later
 
-- [] Add a Post review button in the Reviews List page
+- [] When posting a new comment there is no vote count assigned. Default to 0
 - [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
-- [] Review the "first comment" flow as it appears to not post the comment body
 - [] Categories page: users can add a new category if it doesn't exist
 - [] Reviews List: users can delete a review (if they own it)
+- [] On EXTRA small mobile screens create a smaller table for better visibility
 - [] Users page: create a login/logout function - no passwords as authentication not yet built
 
 # Done
 
+- [x] Add a Post review button in the Reviews List page
+- [x] Review the "first comment" flow as it appears to not post the comment body
 - [x] Reviews List: users can create a new review for a game
 - [x] Users page: users can review a list of all other users
 - [x] Users: individual page for each user
