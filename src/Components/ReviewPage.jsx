@@ -92,30 +92,34 @@ function ReviewPage() {
     <main>
       <article className="blog-post container">
         <h2 className="blog-post-title mb-1 mt-5"> {title}</h2>
-        <h3 className="position-relative">
-          <span className="badge bg-success rounded-pill position-absolute top-0 end-0">
-            {voteCount}
-          </span>
-        </h3>
         <p className="blog-post-meta">
           {formattedDate}, <strong> {owner} </strong>
         </p>
         <p>{review_body}</p>
 
         <hr />
-        <div className="container text-center">
-          <div className="row">
-            <p className="col">Category: {category}</p>
-            <div className="col">
-              {liked ? (
-                <button onClick={downVote} className="btn btn-success">
-                  <i className="fa-solid fa-thumbs-up fa-xl btn"></i>
-                </button>
-              ) : (
-                <button onClick={upvote} className="btn btn-light">
-                  <i className="fa-solid fa-thumbs-up fa-xl btn"></i>
-                </button>
-              )}
+        <div className="container">
+          <div className="row d-flex justify-content-end">
+            <div className="col text-capitalize mt-auto">
+              <p className="col">
+                Category: <strong>{category}</strong>
+              </p>
+            </div>
+            <div className="col-auto">
+              <div className="input-group justify-content-end">
+                <div className="input-group-text">
+                  <strong>{voteCount}</strong>
+                </div>
+                {liked ? (
+                  <button onClick={downVote} className="btn btn-success border">
+                    <i className="fa-solid fa-heart fa-xl btn"></i>
+                  </button>
+                ) : (
+                  <button onClick={upvote} className="btn btn-light border">
+                    <i className="fa-solid fa-heart fa-xl btn"></i>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
