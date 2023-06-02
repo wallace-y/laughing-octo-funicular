@@ -9,6 +9,7 @@ const UserList = lazy(() => import("./Components/UserList"));
 const UserPage = lazy(() => import("./Components/UserPage"));
 const Error = lazy(() => import("./Components/Error"));
 const NewReview = lazy(() => import("./Components/NewReview"));
+const Deleted = lazy(() => import("./Components/Deleted"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/reviews/:review_id" element={<ReviewPage />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/users/:username" element={<UserPage />} />
+          <Route path="/deleted" element={<Deleted />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>
