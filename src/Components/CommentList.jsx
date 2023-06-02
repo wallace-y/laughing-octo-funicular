@@ -71,7 +71,7 @@ function CommentList() {
 
   if (comments.length === 0) {
     return (
-      <main className="container bg-light">
+      <main className="container bg-light mt-5 pb-1">
         <h3 className="text-center">
           Look like there is nothing here. Why not start the conversation!
         </h3>
@@ -96,6 +96,11 @@ function CommentList() {
             name="review_body"
             className="form-control"
             placeholder="What do you think?"
+            value={newComment}
+            onChange={(e) => {
+              setNewComment(e.target.value);
+            }}
+            onKeyUp={handleKeyPress}
           ></textarea>
           <button className="btn btn-outline-secondary">
             <i className="fa-solid fa-comment btn"></i>
