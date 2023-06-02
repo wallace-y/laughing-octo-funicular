@@ -1,5 +1,5 @@
 # To Do First
-
+- [] add loading state to categories page
 - [] Categories page: users can add a new category if it doesn't exist
 - [] Investigate 404 error in COmmentsList component when deleting review. Look to prevent rendering comment list when deleting?
 - [] Add custom colours
