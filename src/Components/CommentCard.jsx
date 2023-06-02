@@ -16,20 +16,24 @@ function CommentCard({ comment }) {
 
   //set initial vote count
   useEffect(() => {
-    setVoteCount(votes);
+    setVoteCount(votes || 0);
   }, []);
 
   function upvote() {
     setVoteCount((currentCount) => currentCount + 1);
+    setInProgress(true);
     setError(null);
     setLiked(true);
-    upvoteComment(comment_id, 1).catch((err) => {
-      if (err) {
+    upvoteComment(comment_id, 1)
+      .then((res) => {
+        setInProgress(false);
+      })
+      .catch((err) => {
+        setInProgress(false);
         setVoteCount((currentCount) => currentCount - 1);
         setError("Something went wrong, please try again.");
         setLiked(false);
-      }
-    });
+      });
   }
 
   function downVote() {
@@ -95,7 +99,9 @@ function CommentCard({ comment }) {
                   </div>
                   <div className="mb-1">{body}</div>
                   <div className="input-group justify-content-end">
-                    <div className="input-group-text"><strong>{voteCount}</strong></div>
+                    <div className="input-group-text">
+                      <strong>{voteCount}</strong>
+                    </div>
                     {/* render like button depending on if liked or not */}
 
                     {liked ? (
@@ -124,8 +130,6 @@ function CommentCard({ comment }) {
                     )}
                   </div>
                 </div>
-
-      
               </li>
             )}
           </>

@@ -23,31 +23,30 @@ function CommentList() {
       .catch((err) => {
         setError(err.message);
       });
-  }, []);
+  }, [handleSubmit]);
 
   function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
     let review = {
-      // body: event.target.review_body.value,
       body: newComment,
       username: "cooljmessy",
     };
     setComments((currentList) => {
       let oldList = [...currentList];
       review.author = review.username;
-      if (currentList.length > 0) {
-        review.comment_id = oldList[oldList.length - 1].comment_id + 1;
-      } else {
-        review.comment_id = 1;
-      }
+
       return [review, ...oldList];
     });
     setError(null);
-    addComment(review_id, review).catch((err) => {
-      if (err) {
+    addComment(review_id, review)
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
         setError("There was a problem adding your comment. Please try again.");
-      }
-    });
+      });
     setNewComment("");
   }
 
@@ -59,7 +58,7 @@ function CommentList() {
 
   if (loading) {
     return (
-      <main className="text-center mt-5">
+      <main className="text-center">
         <img
           style={{ width: "100px" }}
           src={loadingImage}
@@ -72,8 +71,8 @@ function CommentList() {
   if (comments.length === 0) {
     return (
       <main className="container bg-light mt-5 pb-1">
-        <h3 className="text-center">
-          Look like there is nothing here. Why not start the conversation!
+        <h3 className="text-center pt-3">
+          Look like there is nothing here. Why not start the conversation?
         </h3>
         <h4 className="text-center">Top tips for commenting</h4>
         <ul>
