@@ -81,3 +81,9 @@ export const postReview = (review) => {
     return res.data;
   });
 };
+
+export const deleteReview = (review_id) => {
+  return baseApi.delete(`/reviews/${review_id}`).then((res) => {
+    return res.data;
+  });
+};

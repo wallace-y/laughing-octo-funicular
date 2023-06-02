@@ -1,16 +1,21 @@
 import loadingImage from "../assets/tic-tac-toe.gif";
 
-import { useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import CommentList from "./CommentList";
 import Error from "./Error";
-import { useEffect, useState } from "react";
-import { getReviewById, upvoteReview } from "../utils";
+import { useEffect, useState, useContext } from "react";
+import { getReviewById, upvoteReview, deleteReview } from "../utils";
 import moment from "moment";
+import { UserContext } from "../contexts/User";
 
 function ReviewPage() {
+  const { user } = useContext(UserContext);
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [loading, setLoading] = useState(true);
+  const [deleted, setDeleted] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+
   const [error, setError] = useState(null);
   const [voteCount, setVoteCount] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -46,6 +51,7 @@ function ReviewPage() {
     });
   }
 
+  // downvote a review
   function downVote() {
     setVoteCount((currentCount) => currentCount - 1);
     setError(null);
@@ -57,6 +63,22 @@ function ReviewPage() {
         setLiked(true);
       }
     });
+  }
+
+  // delete a review
+  function handleDelete() {
+    setLoading(true);
+    deleteReview(review_id)
+      .then((res) => {
+        setLoading(false);
+        setDeleted(true);
+      })
+      .catch((err) => {
+        setError(
+          "Look's like something went wrong. Please refresh and try again."
+        );
+        setDeleted(false);
+      });
   }
 
   useEffect(() => {
@@ -86,6 +108,10 @@ function ReviewPage() {
         ></img>
       </main>
     );
+  }
+
+  if (deleted) {
+    return <Navigate to="/deleted" replace={true} />;
   }
 
   return (
@@ -119,6 +145,19 @@ function ReviewPage() {
                     <i className="fa-solid fa-heart fa-xl btn"></i>
                   </button>
                 )}
+                {/* delete button conditionally rendered */}
+                {user === owner ? (
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteModal"
+                    className="btn btn-light border"
+                  >
+                    <i className="text-danger fa-solid fa-square-minus fa-xl "></i>
+                  </button>
+                ) : (
+                  false
+                )}
               </div>
             </div>
           </div>
@@ -126,6 +165,52 @@ function ReviewPage() {
 
         <CommentList />
       </article>
+
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="deleteModal"
+        tabIndex="-1"
+        aria-labelledby="deleteModal"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Are you sure?
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              This action is irreversible. Please double check you wish to
+              delete this review.
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                onClick={handleDelete}
+                type="button"
+                className="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Yes I'm Sure.
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

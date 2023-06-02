@@ -1,17 +1,18 @@
 # To Do First
 
-- [] Loading state for new comments could be improved. Currently if two comments are entered in quick succession they are briefly assigned the same value.
+- [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
+- [] Categories page: users can add a new category if it doesn't exist
+- [] Investigate 404 error in COmmentsList component when deleting review. Look to prevent rendering comment list when deleting?
 
 # To Do Later
 
-- [] On EXTRA small mobile screens create a smaller table for better visibility
-- [] Reviews List: users can delete a review (if they own it)
-- [] Improve lazy loading component in App.jsx from just Loading... to the loading image.
-- [] Categories page: users can add a new category if it doesn't exist
 - [] Users page: create a login/logout function - no passwords as authentication not yet built
 
 # Done
 
+- [x] Loading state for new comments could be improved. Currently if two comments are entered in quick succession they are briefly assigned the same value.
+- [x] Reviews List: users can delete a review (if they own it)
+- [x] On EXTRA small mobile screens create a smaller table for better visibility
 - [x] When posting a new comment there is no vote count assigned. Default to 0
 - [x] Add a Post review button in the Reviews List page
 - [x] Review the "first comment" flow as it appears to not post the comment body
