@@ -14,7 +14,7 @@ const Deleted = lazy(() => import("./Components/Deleted"));
 
 function App() {
   return (
-    <div>
+    <div className="bg-light">
       <Suspense
         fallback={
           <main className="text-center mt-5">

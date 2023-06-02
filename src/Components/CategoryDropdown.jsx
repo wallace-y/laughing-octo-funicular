@@ -6,9 +6,10 @@ function Dropdown({ categories, searchParams, setSearchParams }) {
   };
 
   return (
-    <section>
+    <section >
       <select
         className="form-select"
+        data-bs-theme="dark"
         id="category-selection"
         onChange={(event) => {
           setFilterCategory(event.target.value);

@@ -40,7 +40,7 @@ function ReviewsList() {
   }
 
   return (
-    <main className="m-5">
+    <main className="m-5 font-monospace pb-3">
       <h1 className="text-center mt-5">All Users</h1>
       <div className="d-flex justify-content-center">
         <ul className="list-group">

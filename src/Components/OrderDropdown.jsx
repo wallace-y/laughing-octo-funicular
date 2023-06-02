@@ -8,6 +8,7 @@ function OrderDropdown({ searchParams, setSearchParams }) {
   return (
     <section>
       <select
+        data-bs-theme="dark"
         className="form-select"
         id="all-filters"
         onChange={(event) => {
