@@ -84,13 +84,13 @@ function ReviewsList() {
               <th scope="col" className="d-none d-sm-table-cell">
                 #
               </th>
-              <th scope="col" className="d-block">
+              <th scope="col" className="">
                 Image
               </th>
               <th scope="col" className="d-none d-sm-table-cell">
                 Date
               </th>
-              <th scope="col" className="d-block">
+              <th scope="col" className="">
                 Title
               </th>
               <th scope="col" className="d-none d-sm-table-cell">
