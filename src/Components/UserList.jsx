@@ -1,8 +1,8 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../utils";
 import Error from "./Error";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 function ReviewsList() {
   const [users, setUsers] = useState([]);
@@ -24,15 +24,7 @@ function ReviewsList() {
   }, []);
 
   if (loading) {
-    return (
-      <main className="text-center mt-5">
-        <img
-          style={{ width: "200px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (error) {

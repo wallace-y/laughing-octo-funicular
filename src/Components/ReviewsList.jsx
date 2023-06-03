@@ -1,4 +1,3 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
 import { useEffect, useState } from "react";
 import { getAllReviews, getCategories } from "../utils";
 import { Link, useSearchParams } from "react-router-dom";
@@ -7,6 +6,7 @@ import SortDropdown from "./SortDropdown";
 import OrderDropdown from "./OrderDropdown";
 import moment from "moment";
 import Error from "./Error";
+import Loading from "./Loading";
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
@@ -49,15 +49,7 @@ function ReviewsList() {
   }, []);
 
   if (loading) {
-    return (
-      <main className="text-center mt-5">
-        <img
-          style={{ width: "200px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (error) {
@@ -107,13 +99,22 @@ function ReviewsList() {
               <th scope="col" className="d-none d-sm-table-cell">
                 Designer
               </th>
-              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+              <th
+                scope="col"
+                className="d-none d-md-none d-sm-table-cell d-lg-table-cell"
+              >
                 Category
               </th>
-              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+              <th
+                scope="col"
+                className="d-none d-md-none d-sm-table-cell d-lg-table-cell"
+              >
                 Votes
               </th>
-              <th scope="col" className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+              <th
+                scope="col"
+                className="d-none d-md-none d-sm-table-cell d-lg-table-cell"
+              >
                 Comments
               </th>
             </tr>
@@ -149,7 +150,9 @@ function ReviewsList() {
                   <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell text-capitalize">
                     {review.category}
                   </td>
-                  <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell">{review.votes}</td>
+                  <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
+                    {review.votes}
+                  </td>
                   <td className="d-none d-md-none d-sm-table-cell d-lg-table-cell">
                     {review.comment_count}
                   </td>

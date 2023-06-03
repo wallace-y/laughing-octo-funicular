@@ -1,9 +1,9 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { getCategories, postReview } from "../utils";
 import Error from "./Error";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 function NewReview() {
   const { user } = useContext(UserContext);
@@ -52,15 +52,7 @@ function NewReview() {
   }
 
   if (posting) {
-    return (
-      <main className="text-center mt-5">
-        <img
-          style={{ width: "200px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (posted) {

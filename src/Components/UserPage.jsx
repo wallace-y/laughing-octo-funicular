@@ -1,8 +1,8 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
 import { useParams } from "react-router-dom";
 import Error from "./Error";
 import { useEffect, useState } from "react";
 import { getUser } from "../utils";
+import Loading from "./Loading";
 
 function UserPage() {
   const { username } = useParams();
@@ -27,15 +27,7 @@ function UserPage() {
   }
 
   if (loading) {
-    return (
-      <main className="text-center mt-5">
-        <img
-          style={{ width: "200px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   return (

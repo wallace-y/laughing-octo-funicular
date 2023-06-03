@@ -1,5 +1,3 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
-
 import { Link, useParams, Navigate } from "react-router-dom";
 import CommentList from "./CommentList";
 import Error from "./Error";
@@ -7,6 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import { getReviewById, upvoteReview, deleteReview } from "../utils";
 import moment from "moment";
 import { UserContext } from "../contexts/User";
+import Loading from "./Loading";
 
 function ReviewPage() {
   const { user } = useContext(UserContext);
@@ -99,15 +98,7 @@ function ReviewPage() {
   }
 
   if (loading) {
-    return (
-      <main className="text-center mt-5">
-        <img
-          style={{ width: "200px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (deleted) {
