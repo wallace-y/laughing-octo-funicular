@@ -1,11 +1,10 @@
-import loadingImage from "../assets/tic-tac-toe.gif";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCommentByReviewId } from "../utils";
-import moment from "moment";
 import { addComment } from "../utils";
 import Error from "./Error";
 import CommentCard from "./CommentCard";
+import Loading from "./Loading";
 
 function CommentList() {
   const { review_id } = useParams();
@@ -57,15 +56,7 @@ function CommentList() {
   }
 
   if (loading) {
-    return (
-      <main className="text-center">
-        <img
-          style={{ width: "100px" }}
-          src={loadingImage}
-          alt="tic-tac-toe loading image"
-        ></img>
-      </main>
-    );
+    return <Loading />;
   }
 
   if (comments.length === 0) {
