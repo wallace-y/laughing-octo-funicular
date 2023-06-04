@@ -1,4 +1,4 @@
-import { Link, useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import CommentList from "./CommentList";
 import Error from "./Error";
 import { useEffect, useState, useContext } from "react";
@@ -28,8 +28,6 @@ function ReviewPage() {
     review_body,
     category,
     created_at,
-    votes,
-    comment_count,
   } = singleReview;
 
   //format the date
@@ -108,16 +106,29 @@ function ReviewPage() {
   return (
     <main>
       <article className="blog-post container">
-        <h2 className="blog-post-title mb-1 mt-5"> {title}</h2>
+        <div className="text-center">
+          <img
+            className="mt-5 mb-5"
+            style={{ width: "200px" }}
+            src={review_img_url}
+            alt={`Cover art for board game review for ${title}`}
+          ></img>
+        </div>
+
+        <h2 className="blog-post-title mb-2"> {title}</h2>
         <p className="blog-post-meta">
           {formattedDate}, <strong> {owner} </strong>
         </p>
+
         <p>{review_body}</p>
 
         <hr />
         <div className="container">
           <div className="row d-flex justify-content-end">
             <div className="col text-capitalize mt-auto">
+              <p>
+                Designed by: <strong>{designer}</strong>
+              </p>
               <p className="col">
                 Category: <strong>{category}</strong>
               </p>
