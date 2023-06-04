@@ -22,7 +22,7 @@ function CommentList() {
       .catch((err) => {
         setError(err.message);
       });
-  }, [handleSubmit]);
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();

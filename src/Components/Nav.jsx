@@ -6,9 +6,9 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark font-monospace">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand my-0 fs-4">Board Game Reviews</Link>
+        <Link to="/" className="navbar-brand my-0 fs-4 d-none d-sm-block">Board Game Reviews</Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ms-auto"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
