@@ -47,3 +47,4 @@ Once the application is running you can access it in your web browser. The main 
 ## Minimum Versions Required
 
 - Node.js v19+
+# laughing-octo-funicular
